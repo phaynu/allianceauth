@@ -7,7 +7,7 @@ from .celeryapp import app as celery_app  # noqa
 import subprocess
 try:
     __version__ = subprocess.Popen(['git', 'status'], stdout=subprocess.PIPE).communicate()[0].decode('utf-8').split('\n')[0].split()[-1]
-except (KeyError, AttributeError):
+except (IndexError, AttributeError, OSError):
     __version__ = 'master'
 
 if __version__ == 'master':
